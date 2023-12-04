@@ -1,0 +1,12 @@
+version : 2
+
+sources:
+  - name: home-exchange-407110
+    schema: Home_exchange
+    tables:
+      name: exchanges
+
+
+
+
+
