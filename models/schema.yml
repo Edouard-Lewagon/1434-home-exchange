@@ -3,7 +3,11 @@ version: 2
 sources:
   - name: home-exchange-407110
     schema: Home_exchange
-    description: Home_exchange data source 
     tables:
-    - name: 
+      - name: exchanges
+        identifier: exchanges
+      - name: subscriptions
+        identifier: subscriptions
+
+
 
