@@ -42,4 +42,3 @@ models:
       +materialized: table
     staging:
       +materialized: table
-      +schema: stagingdatabase
