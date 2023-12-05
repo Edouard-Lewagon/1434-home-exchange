@@ -1,3 +1,8 @@
+WITH country_occurrences AS (
+  SELECT country, COUNT(*) AS occurrences
+  FROM {{ source('home-exchange-407110', 'exchanges') }}
+  GROUP BY country
+)
 SELECT
     conversation_id,
     exchange_id,
@@ -17,7 +22,11 @@ SELECT
     residence_type,
     capacity,
     country,
-    
-    
 from {{ source('home-exchange-407110', 'exchanges') }}
-WHERE country IS NOT NULL
+WHERE
+  (country IS NOT NULL AND country IN (
+    SELECT country
+    FROM country_occurrences
+    ORDER BY occurrences DESC
+    LIMIT 11
+  ))
