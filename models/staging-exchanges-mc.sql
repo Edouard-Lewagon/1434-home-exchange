@@ -17,8 +17,7 @@ SELECT
     residence_type,
     capacity,
     country,
-    region,
-    department,
-    city,
+    
     
 from {{ source('home-exchange-407110', 'exchanges') }}
+WHERE country IS NOT NULL
