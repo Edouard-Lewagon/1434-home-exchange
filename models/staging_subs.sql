@@ -7,10 +7,10 @@ WITH country_occurrences AS (
 
 SELECT DISTINCT
 CONCAT(SUBSTR(CAST(subscription_date AS STRING), 1, 4), '_', CAST(user_id AS STRING)) AS annee_user_id,
-CAST(subscription_date AS DATE) AS subscription_date,
+CAST(subscription_date AS DATE) AS subscription_date_,
 user_id,
 renew,
-CAST(first_subscription_date AS DATE) AS first_subscription_date,
+CAST(first_subscription_date AS DATE) AS first_subscription_date_,
 first_subscription,
 referral,
 promotion,
