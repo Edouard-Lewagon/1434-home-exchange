@@ -16,6 +16,7 @@ SELECT DISTINCT
     ,e.home_type
     ,e.residence_type
     ,e.capacity
+    ,e.country
     ,s.country AS host_country
     ,su.country AS guest_country
     ,EXTRACT(YEAR FROM created_at_date) AS year_conversation
