@@ -22,6 +22,6 @@ SELECT DISTINCT
     ,CONCAT(SUBSTR(CAST(created_at_date AS STRING), 1, 4), '_', CAST(e.host_user_id AS STRING)) AS annee_host_id
     ,CONCAT(SUBSTR(CAST(created_at_date AS STRING), 1, 4), '_', CAST(e.guest_user_id AS STRING)) AS annee_guest_id
 
-FROM {{ ref('staging-exchanges-mc') }} e
-LEFT JOIN {{ ref('staging_subscriptions') }} s ON e.host_user_id=s.user_id
-LEFT JOIN {{ ref('staging_subscriptions') }} su ON e.guest_user_id=su.user_id
+FROM {{ ref('staging_exchanges_date') }} e
+LEFT JOIN {{ ref('staging_subscriptions_date') }} s ON e.host_user_id=s.user_id
+LEFT JOIN {{ ref('staging_subscriptions_date') }} su ON e.guest_user_id=su.user_id

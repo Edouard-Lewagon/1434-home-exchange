@@ -28,5 +28,5 @@ SELECT DISTINCT
     END AS renew_statut
 
 FROM {{ ref('join_country_year_conversation') }} j
-LEFT JOIN {{ ref('staging_subscriptions') }} s ON j.host_user_id=s.user_id
-LEFT JOIN {{ ref('staging_subscriptions') }} su ON j.guest_user_id=su.user_id
+LEFT JOIN {{ ref('staging_subscriptions_date') }} s ON j.host_user_id=s.user_id
+LEFT JOIN {{ ref('staging_subscriptions_date') }} su ON j.guest_user_id=su.user_id
