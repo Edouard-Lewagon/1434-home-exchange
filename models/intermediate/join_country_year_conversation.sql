@@ -16,12 +16,13 @@ SELECT DISTINCT
     ,e.home_type
     ,e.residence_type
     ,e.capacity
+    ,e.country
     ,s.country AS host_country
     ,su.country AS guest_country
     ,EXTRACT(YEAR FROM created_at_date) AS year_conversation
     ,CONCAT(SUBSTR(CAST(created_at_date AS STRING), 1, 4), '_', CAST(e.host_user_id AS STRING)) AS annee_host_id
     ,CONCAT(SUBSTR(CAST(created_at_date AS STRING), 1, 4), '_', CAST(e.guest_user_id AS STRING)) AS annee_guest_id
 
-FROM {{ ref('staging-exchanges-mc') }} e
+FROM {{ ref('staging_exchanges_date') }} e
 LEFT JOIN {{ ref('staging_subscriptions') }} s ON e.host_user_id=s.user_id
 LEFT JOIN {{ ref('staging_subscriptions') }} su ON e.guest_user_id=su.user_id

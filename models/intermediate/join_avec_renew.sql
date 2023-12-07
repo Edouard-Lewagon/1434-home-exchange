@@ -17,6 +17,7 @@ SELECT DISTINCT
     ,home_type
     ,residence_type
     ,capacity
+    ,j.country
     ,host_country
     ,guest_country
     ,year_conversation
