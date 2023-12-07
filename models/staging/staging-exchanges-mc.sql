@@ -28,5 +28,5 @@ WHERE
     SELECT country
     FROM country_occurrences
     ORDER BY occurrences DESC
-    LIMIT 11
+    LIMIT 10
   ))
