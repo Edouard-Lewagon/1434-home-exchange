@@ -32,6 +32,16 @@ SEARCH_PARAMS = {
     "organization_location_radius": "",   # 25, 50, 100, or 300
 }
 
+# ─── People search filters (edit these to filter contacts) ───────────────────
+PEOPLE_SEARCH_PARAMS = {
+    "person_titles": "",                 # e.g. "CEO,CTO,Founder"
+    "person_not_titles": "",             # titles to exclude
+    "person_past_titles": "",            # past job titles
+    "person_locations": "",              # e.g. "France,Paris"
+    "contact_email_status_v2": "",       # "verified", "likely_to_engage", etc.
+    "q_person_name": "",                 # search by person name
+}
+
 # How many pages of organizations to scrape (25 orgs per page)
 MAX_ORG_PAGES = 1
 
@@ -74,11 +84,14 @@ def search_organizations(page=1):
 
 
 def search_people(organization_id, page=1):
-    """Search people within a specific organization."""
+    """Search people within a specific organization, with optional filters."""
     params = {
         "organization_ids": organization_id,
         "page": str(page),
     }
+    for key, value in PEOPLE_SEARCH_PARAMS.items():
+        if value:
+            params[key] = value
     query = urlencode(params)
     return api_get(f"/search_people?{query}")
 
